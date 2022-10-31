@@ -8,13 +8,13 @@ tag "og:image". If the article doesn't have such a tag, the value will be None.
 
 ## To run this Microservice:
 * Activate the project's [virtual environment] (https://docs.python.org/3/tutorial/venv.html). 
-  * In a terminal on MacOS from the project's root directory, run source venv/bin/activate.
+  * In a terminal on MacOS from the project's root directory, `run source venv/bin/activate`
 
 * Then, run the program by entering the command python3 image_scraper.py
 
 ## To request data from this microservice: 
 * Connect a socket to the correct address and port 5555. 
-* Then, send a list (array) of URL strings.
+* Then, send a list (array in non-python terms) of URL strings.
 
 ## To receive data from this microservice: 
 You will receive a JSON response from
