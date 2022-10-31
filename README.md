@@ -35,7 +35,7 @@ socket.connect("tcp://localhost:5555")
 # Send URL array as a byte string
 print(f"Sending data …")
 data = "[
-'https://www.theguardian.com/us-news/2022/oct/04/ballistics'
+         'https://www.theguardian.com/us-news/2022/oct/04/ballistics'
          '-tests-link-seven-shootings-in-california-in-possible-serial'
          '-killer-case',
          'https://www.reuters.com/world/major-un-powers-question-pacific'
