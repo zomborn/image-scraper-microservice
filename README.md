@@ -1,4 +1,4 @@
-# News Article Image Scraper Microservice
+# News Image Scraper Microservice
 A ZeroMQ microservice that responds to a list of news article URLs with a JSON
 containing properties as article URLs, and values as the primary image URL 
 associated with the article. 
