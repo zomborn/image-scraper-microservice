@@ -12,7 +12,7 @@ tag "og:image". If the article doesn't have such a tag, the value will be None.
   * In a terminal on MacOS from the project's root directory, run `source venv/bin/activate`
   * Install dependencies: `pip install -r /requirements.txt`
 
-* Then, run the program by entering the command `python3 image_scraper.py`
+* Then, run the program by entering the command `python3 img_scraper.py`
 
 ## To request data from this microservice: 
 * Connect a socket to the correct address and port 5555. 
