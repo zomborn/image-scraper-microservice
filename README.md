@@ -46,3 +46,6 @@ socket.send(data.encode())
 message = socket.recv()
 print(f"Received reply [ {message} ]")
 ```
+## Unified Modeling Language (UML) Sequence Diagram
+![News Image Scraper Microservice](https://user-images.githubusercontent.com/91298281/199120513-8bac2745-6712-43aa-a8f4-0cb98d5f003e.jpeg)
+
