@@ -3,12 +3,14 @@ A ZeroMQ microservice that receives a list of news article and responds with a J
 containing all of the news articles as properties, and the values as the primary image URL 
 associated with the article. 
 
-The main image for each article designated by the [OpenGraph Protocol](https://ogp.me/) HTML meta 
+The microservice searches for the main image in each article designated by the [OpenGraph Protocol](https://ogp.me/) HTML meta 
 tag "og:image". If the article doesn't have such a tag, the value will be None.
 
 ## To run this Microservice:
-* Activate the project's [virtual environment](https://docs.python.org/3/tutorial/venv.html). 
+* It's recommended to install the package dependencies in a [virtual environment](https://docs.python.org/3/tutorial/venv.html).
+* Activate the project's virtual environment. 
   * In a terminal on MacOS from the project's root directory, run `source venv/bin/activate`
+  * Install dependencies: `pip install -r /path/to/requirements.txt`
 
 * Then, run the program by entering the command `python3 image_scraper.py`
 
