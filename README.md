@@ -1,6 +1,6 @@
 # News Image Scraper Microservice
-A ZeroMQ microservice that responds to a list of news article URLs with a JSON
-containing properties as article URLs, and values as the primary image URL 
+A ZeroMQ microservice that receives a list of news article and responds with a JSON
+containing all of the news articles as properties, and the values as the primary image URL 
 associated with the article. 
 
 The main image for each article designated by the [OpenGraph Protocol](https://ogp.me/) HTML meta 
@@ -14,7 +14,7 @@ tag "og:image". If the article doesn't have such a tag, the value will be None.
 
 ## To request data from this microservice: 
 * Connect a socket to the correct address and port 5555. 
-* Then, send a list (array in non-python terms) of URL strings.
+* Then, send an array of URL strings.
 
 ## To receive data from this microservice: 
 You will receive a JSON response from
