@@ -10,7 +10,7 @@ tag "og:image". If the article doesn't have such a tag, the value will be None.
 * It's recommended to install the package dependencies in a [virtual environment](https://docs.python.org/3/tutorial/venv.html).
 * Activate the project's virtual environment. 
   * In a terminal on MacOS from the project's root directory, run `source venv/bin/activate`
-  * Install dependencies: `pip install -r /path/to/requirements.txt`
+  * Install dependencies: `pip install -r /requirements.txt`
 
 * Then, run the program by entering the command `python3 image_scraper.py`
 
