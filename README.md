@@ -8,7 +8,7 @@ tag "og:image". If the article doesn't have such a tag, the value will be None.
 
 ## To run this Microservice:
 * Activate the project's [virtual environment] (https://docs.python.org/3/tutorial/venv.html). 
-  * In a terminal on MacOS from the project's root directory, `run source venv/bin/activate`
+  * In a terminal on MacOS from the project's root directory, run `source venv/bin/activate`
 
 * Then, run the program by entering the command `python3 image_scraper.py`
 
