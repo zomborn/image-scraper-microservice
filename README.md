@@ -21,17 +21,18 @@ You will receive a JSON response from
 the server as a response in the same socket for which you sent the request.
 
 ## Example call to the microservice:
+```python
 import zmq
 import test_urls
 
 context = zmq.Context()
 
-###  Socket to talk to server
+#  Socket to talk to server
 print("Connecting to image scraper server…")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:5555")
 
-### Send URL array as a byte string
+# Send URL array as a byte string
 print(f"Sending data …")
 data = "[
 'https://www.theguardian.com/us-news/2022/oct/04/ballistics'
@@ -42,6 +43,7 @@ data = "[
          ]"
 socket.send(data.encode())
 
-###  Get the reply.
+#  Get the reply.
 message = socket.recv()
 print(f"Received reply [ {message} ]")
+```
