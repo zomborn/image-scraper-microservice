@@ -1,5 +1,5 @@
 # Author: Nick Zombor
-# Date: 10/18/23
+# Date: 11/07/22
 # Description: CS 361 Microservice to be used by Raymond Randall.
 # Receives a URL for a news article webpage and returns the image at the top of
 # that webpage.
@@ -16,8 +16,6 @@ import zmq
 import json
 from bs4 import BeautifulSoup
 
-# url = "https://www.nytimes.com/2022/10/18/world/europe/ukraine-russia-blackout-water.html"
-
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
@@ -29,25 +27,31 @@ while True:
     start_time = time.time()
     print(f"Received data: {type(raw_data)}")
 
-    # decode the byte string into a string, then parse string into a list
+    # Validate user input
     try:
+        # decode byte string into a JSON string, then parse string into a list
         urls_list = json.loads(raw_data.decode())
     except TypeError as err:
         print("Type Error:", err)
         socket.send(b"Error: could not convert data to a Python List.")
+        raise
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
         socket.send(b"Unexpected error.")
         raise
-    else:
-        urls_dict = dict() # populate with url : image url
-        images_found = 0
-        for url in urls_list:
-            print(f"Searching for image at url: {url}")
+
+    urls_dict = dict()  # populate with url : image url
+    images_found = 0
+    for url in urls_list:
+        print(f"Searching for image at url: {url}")
+
+        try:
             getURL = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
-
+        except Exception as err:
+            print(f"Error retrieving image {err=}. {type(err)}")
+            image_url = None
+        else:
             soup = BeautifulSoup(getURL.text, 'html.parser')
-
             # find the first image with og:image tag, else returns None
             findImageTag = soup.find('meta', property="og:image")
             if findImageTag:
@@ -56,14 +60,14 @@ while True:
             else:
                 image_url = None
 
-            urls_dict[url] = image_url
+        # Add image url to dictionary if found, else add None
+        urls_dict[url] = image_url
 
-        end_time = time.time()
-        print(urls_dict)
-        print(f"Parsed {len(urls_list)} news articles, found {images_found} "
-              f"images in {round(end_time - start_time, 1)} seconds.")
+    end_time = time.time()
+    print(f"Parsed {len(urls_list)} news articles, found {images_found} "
+          f"images in {round(end_time - start_time, 1)} seconds.")
 
-        #  Send response to client
-        resp = json.dumps(urls_dict)
-        socket.send(resp.encode())
+    #  Send response to client
+    resp = json.dumps(urls_dict)
+    socket.send(resp.encode())
 
